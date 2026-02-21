@@ -1,1 +1,1 @@
-# Healthify
+A website that bridges between a patient and specialists. A patient sends their symptoms to to a chat bot which will then convert the conversation into a medical file/history. Then later assigns a specific specialist to patients depending on the symptoms described. The specialist will then be able to have a conference call appointment with the patient to address the possible illness.
