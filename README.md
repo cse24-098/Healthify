@@ -3,3 +3,5 @@ A website that bridges between a patient and specialists. A patient sends their 
 2. Nurse Pam chatbot: generates a medical report from the symptoms the user describes during the conversation, which will be used to refer the patient to the right specialist.
 3. Services page is where the patient gets the help from their specialist which includes, video conferecing consultations, medical report viewing and appointment confirmations
 4. Resources page is where the user can has accses to any tips and articles related to healthcare.
+
+[the website is incomplete due to challenges we faced to train the ai model for the Chatbot,our sincere apology]
