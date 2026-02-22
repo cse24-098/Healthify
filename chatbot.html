@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NURSE PAM - Diabetes & Cardio Risk Checker</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles specific to chatbot page */
+        .chatbot-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .chatbot-container h1 {
+            color: #221d8f;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .checker-container {
+            background: #f5f5f5;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        textarea {
+            width: 100%;
+            height: 80px;
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: Arial;
+        }
+        
+        button {
+            background: #221d8f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+        
+        button:hover {
+            background: #3a33b8;
+        }
+        
+        .response {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            white-space: pre-line;
+            margin-top: 20px;
+            min-height: 200px;
+            border: 1px solid #ddd;
+            line-height: 1.6;
+        }
+        
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Active nav link style */
+        .nav-list li a.active {
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="hhealthify.jpg" alt="Company Logo" class="logoImg">
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="services.html">SERVICES</a></li>
+                    <li><a href="chatbot-test.html" class="active">NURSE PAM</a></li>
+                    <li><a href="resources.html">RESOURCES</a></li>
+                </ul>
+            </nav> 
+        </div> 
+    </header>
+    
+    <main>
+        <div class="chatbot-container">
+            <h1>NURSE PAM - Diabetes & Cardiovascular Risk Checker</h1>
+            
+            <div class="checker-container">
+                <h3>Test Symptoms:</h3>
+                
+                <div class="button-group">
+                    <button onclick="testDiabetes()">Test Diabetes Symptoms</button>
+                    <button onclick="testCardio()">Test Heart Symptoms</button>
+                    <button onclick="testCombined()">Test Combined</button>
+                </div>
+                
+                <textarea id="customSymptoms" placeholder="Enter your own symptoms... (e.g., chest pain, fatigue, frequent urination)"></textarea>
+                
+                <button onclick="testCustom()">Check Custom Symptoms</button>
+                
+                <div class="response" id="response">Response will appear here...</div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const API_URL = '';  // Empty because same server
+
+        async function callAPI(endpoint, data) {
+            try {
+                const response = await fetch(`/api/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                return await response.json();
+            } catch (error) {
+                console.error('API call error:', error);
+                return { response: 'Error connecting to server. Make sure the server is running.' };
+            }
+        }
+
+        async function testDiabetes() {
+            document.getElementById('response').innerHTML = '<div class="loading">Loading... Please wait (this takes 5-10 seconds)</div>';
+            
+            const result = await callAPI('/api/chat', {
+                symptoms: "frequent urination, excessive thirst, unexplained weight loss, fatigue",
+                age: "45",
+                gender: "male"
+            });
+            
+            document.getElementById('response').innerText = result.response;
+        }
+        
+        async function testCardio() {
+            document.getElementById('response').innerHTML = '<div class="loading">Loading... Please wait (this takes 5-10 seconds)</div>';
+            
+            const result = await callAPI('/api/chat', {
+                symptoms: "chest pain, shortness of breath, dizziness, pain in left arm",
+                age: "55",
+                gender: "female"
+            });
+            
+            document.getElementById('response').innerText = result.response;
+        }
+        
+        async function testCombined() {
+            document.getElementById('response').innerHTML = '<div class="loading">Loading... Please wait (this takes 5-10 seconds)</div>';
+            
+            const result = await callAPI('/api/chat', {
+                type: "comprehensive",
+                symptoms: "chest pain when walking, tingling in feet, blurred vision",
+                age: "60",
+                gender: "male",
+                familyHistory: "father had heart attack at 65, mother had type 2 diabetes",
+                bloodPressure: "145/95",
+                bloodSugar: "220 mg/dL",
+                weight: "95 kg",
+                height: "175 cm",
+                lifestyle: "sedentary, smokes 10 cigarettes/day, eats high-carb diet"
+            });
+            
+            document.getElementById('response').innerText = result.response;
+        }
+        
+        async function testCustom() {
+            const symptoms = document.getElementById('customSymptoms').value;
+            if (!symptoms) {
+                document.getElementById('response').innerText = "Please enter symptoms";
+                return;
+            }
+            
+            document.getElementById('response').innerHTML = '<div class="loading">Loading... Please wait (this takes 5-10 seconds)</div>';
+            
+            const result = await callAPI('/api/chat', {
+                symptoms: symptoms
+            });
+            
+            document.getElementById('response').innerText = result.response;
+        }
+
+        // Mobile navigation toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            if (navToggle) {
+                navToggle.addEventListener('click', function() {
+                    document.querySelector('.nav').classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

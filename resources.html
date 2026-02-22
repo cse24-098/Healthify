@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html leng="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device width, intial-scale=1.0">
+        <title>RESOURCES</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="hhealthify.jpg" alt="Company Logo" class="logoImg">
+                    </a>
+                </div>
+                <button class="nav-toggle" aria-label="toggle navigation">
+                    <span class="hamburger"></span>
+                </button>
+                <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="sevices.html">SERVICES</a></li>
+                    <li><a href="chatbot.html">NURSE PAM</a></li>
+                    <li><a href="#resources">RESOURCES</a></li>
+                
+                </ul>
+                </nav> 
+            </div> 
+        </header>
+        <div class="container">
+            <section class="latest-tips">
+                <h1>TIPS & ARTICLES</h1>
+                <article>
+                    <h2>LATEST TIP</h3>
+                    <p>exercising regularly (150+ minutes/week), eating a balanced, low-sodium diet, maintaining a healthy weight, and smoking cessation</p>
+                </article>
+            </section>
+            <aside class="recent-articles">
+                <h3>
+                    RECENT ARTICLES
+                </h3>
+                <button class="articles-item-btn" onclick="showArticlePopup('22 April 2025','Globally, more than 500 million people live with diabetes and over 6 million died from diabetes-related complications in the year 2021. Furthermore, the number of people living with diabetes is projected to increase by over 90% in sub-Saharan Africa by 2030')">
+                    <strong>
+                        22 April 2025
+                    </strong>
+                    <p>Globally, more than 500 million people live with diabetes and over 6 million died from diabetes-related complications in the year 2021. Furthermore, the number of people living with diabetes is projected to increase by over 90% in sub-Saharan Africa by 2030</p>
+                </button>
+                <button class="article-item-btn" onclick="showArticlePopup('30 September 2025','High blood pressure (BP) is prevalent and uncontrolled in many low‐ and middle‐income countries (LMICs). Uncontrolled BP causes cardiovascular diseases (CVDs) and kidney disease. The high morbidity and mortality caused by uncontrolled BP results in high health expenditures for families and governments. Knowledge of the barriers to BP control may help in crafting suitable interventions. The aim of this study was to explore the barriers to BP control among patients who were on treatment for high BP in public clinics in Gaborone, Botswana')">
+                    <strong>
+                        30 September 2025
+                    </strong>
+                    <p>High blood pressure (BP) is prevalent and uncontrolled in many low‐ and middle‐income countries (LMICs). Uncontrolled BP causes cardiovascular diseases (CVDs) and kidney disease. The high morbidity and mortality caused by uncontrolled BP results in high health expenditures for families and governments. Knowledge of the barriers to BP control may help in crafting suitable interventions. The aim of this study was to explore the barriers to BP control among patients who were on treatment for high BP in public clinics in Gaborone, Botswana</p>
+                </button>
+            </aside>
+            <div id="articlePopup" clas="article-popup" style="display:none">
+                <div class="article-popup-content">
+                <span class="article-pop-close" onclick="closeArticlePopup()">&times;</span>
+                <h4 id="popupDate"></h4>
+                <p id="popupText"></p>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
