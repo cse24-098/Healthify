@@ -8,7 +8,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px;
-background:navy
+background:#221d8f
 }
 
 .logoImg{
@@ -24,7 +24,7 @@ margin:0;
 
 .nav-list li a{
 text-decoration:none;
-color:white;
+color:#dedfe7;
 }
 
 .nav-list li a:hover{
@@ -38,7 +38,7 @@ background:#eee
 }
 
 h1{
-color:rgba(0, 0, 128, 0.799);
+color:#221d8f
 }
 
 p{
@@ -53,6 +53,6 @@ border:none;
 .hamburger{
 width:25px;
 height:3px;
-background:rgb(50, 13, 214);
+background:rgb(210, 213, 215);
 display:block;
 }
